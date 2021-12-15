@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import { startLogin } from '../actions/auth';
 import { fetchFunction } from '../helpers/fetch';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 
 
@@ -26,7 +27,7 @@ const Login = () => {
     const [error, seterror] = useState({err: false, msg: '' ,class:''});
 
     //React Router
-    
+    const navigate = useNavigate();
 
     //handleSubmit
     async function handleSubmit(){
@@ -43,7 +44,7 @@ const Login = () => {
         const login = await dispatch(startLogin(values));
         
         // eslint-disable-next-line no-unused-expressions
-        login ? console.log("hola"): null;
+        login ? navigate('/'): null;
         
     }
 

@@ -1,15 +1,39 @@
 .ant-layout-sider, .ant-menu.ant-menu-dark{
     background-color: $azulSkytel !important;
+
+    
+    
+ 
 }
 .ant-layout{
     background-color: white;
     justify-content: center;
 }
+
+
+/* .ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-has-trigger{
+    min-width: 150px !important;
+    max-width: 150px !important;
+    .ant-layout-sider-trigger{
+        min-width: 150px !important;
+    max-width: 150px !important;
+    }
+} */
+
 .Layout{
+
     &_Header{
         background-color: white;
-        padding: 0 30px !important;
-        margin-top: 5px;
+        padding: 0 50px !important;
+        
+        height: 90px;
+        
+        border-bottom: 2px solid $azulSkytel;
+        .logo{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
         
         img{
             width: 100px;
@@ -18,10 +42,13 @@
         h1{
             color: $azulSkytel;
             font-size: 36px;
+            margin: 0 !important;
         }
 
         svg{
             font-size: 36px;
         }
     }
+
+   
 }

@@ -1,12 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router'
 import LayoutComponent from '../components/Layout/Layout'
 
 const Home = () => {
     return (
        <LayoutComponent>
-           <div>
-               hola soy el hom
-           </div>
+           hola
+           <Outlet/>
        </LayoutComponent>
     )
 }

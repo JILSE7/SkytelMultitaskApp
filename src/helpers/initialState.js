@@ -9,10 +9,14 @@ const initialStateUser = {
     user: {}
 }
 
+const initialStateCustomers = {
+    users: []
+}
 
 
 
 export {
     initialStateLogin,
-    initialStateUser
+    initialStateUser,
+    initialStateCustomers
 }
