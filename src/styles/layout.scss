@@ -1,0 +1,27 @@
+.ant-layout-sider, .ant-menu.ant-menu-dark{
+    background-color: $azulSkytel !important;
+}
+.ant-layout{
+    background-color: white;
+    justify-content: center;
+}
+.Layout{
+    &_Header{
+        background-color: white;
+        padding: 0 30px !important;
+        margin-top: 5px;
+        
+        img{
+            width: 100px;
+            height: 70px;
+        }
+        h1{
+            color: $azulSkytel;
+            font-size: 36px;
+        }
+
+        svg{
+            font-size: 36px;
+        }
+    }
+}
