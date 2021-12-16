@@ -1,27 +1,25 @@
+//Redux
+import { useSelector } from 'react-redux';
+
+//React Router
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //Views
 import Login from '../views/Login'
 import Home from '../views/Home';
-import { useSelector } from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Customers from '../views/Customers';
 import Messages from '../views/Messages';
-
-
+import DashRouter from './DashRouter';
 
 const AppRouter = () => {
     
     
 
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter >
         <Routes>
-            <Route path="/" element={<Home/>}>
-                <Route path="clientes" element={<Customers/>}/>
-                <Route path="mensajes" element={<Messages/>}/>
-            </Route>
-            <Route path="login" element={<Login/>}/>
-          
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/*" element={<DashRouter/>}/>
         </Routes>
     </BrowserRouter>
     )
