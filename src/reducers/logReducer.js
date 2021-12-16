@@ -19,7 +19,13 @@ export const logReducer = (state = initialStateUser , action) => {
             }
            
         case types.logout:
-            return {};
+            return {initialStateUser};
+
+        case types.checkLog:
+            console.log(action.payload);
+            return{
+                ...state
+            }            
             
         default:
             return state;

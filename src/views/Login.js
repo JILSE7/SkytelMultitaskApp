@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../assets/cloud.png'
 
 
@@ -22,15 +22,17 @@ import { useNavigate } from 'react-router';
 const Login = () => {
     //Redux
     const dispatch = useDispatch();
+    //React Router
+    const navigate = useNavigate();
     //Custom Hook
     const [values, handleInputChange] = useForm(initialStateLogin);
     const [error, seterror] = useState({err: false, msg: '' ,class:''});
 
-    //React Router
-    const navigate = useNavigate();
+    
+
 
     //handleSubmit
-    async function handleSubmit(){
+     async function handleSubmit(){
         
         if(values.Username === ""){
             seterror({err: true, msg:'Porfavor ingrese su usuario', class:"animate__animated animate__fadeInLeft"});
@@ -41,10 +43,11 @@ const Login = () => {
         }
         seterror({err: false, msg: 'Excelente', class: 'animate__animated animate__fadeOutRight'});
 
-        const login = await dispatch(startLogin(values));
+        const login =  await dispatch(startLogin(values));
+        console.log(login);
         
         // eslint-disable-next-line no-unused-expressions
-        login ? navigate('/'): null;
+        login ? navigate('/',{replace: true}): null;
         
     }
 

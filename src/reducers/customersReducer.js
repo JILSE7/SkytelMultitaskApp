@@ -1,15 +1,16 @@
-import { initialStateCustomers, initialStateUser } from "../helpers/initialState";
+import { initialStateCustomers } from "../helpers/initialState";
 import { types } from "../types/types";
 
 
 export const customerReducer = (state = initialStateCustomers , action) => {
     
     switch (action.type) {
-        case types.login:
-            
-            
-            return state;
-           
+        case types.setCustomers:
+            return{
+                ...state,
+                users : action.payload
+            }
+
         case types.logout:
             return {};
             

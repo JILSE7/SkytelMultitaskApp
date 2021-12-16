@@ -1,7 +1,12 @@
 import { Table, Tag, Space } from 'antd';
+import useCustomers from '../Hooks/useCustomers';
 
 
 const Customers = () => {
+
+  const {customers} = useCustomers();
+  console.log(customers);
+  
 
     
     return (

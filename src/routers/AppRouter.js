@@ -1,25 +1,43 @@
+import { useEffect } from 'react';
 //Redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkLogin } from '../actions/auth';
 
 //React Router
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import DashRouter from './DashRouter';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 //Views
 import Login from '../views/Login'
-import Home from '../views/Home';
-import Customers from '../views/Customers';
-import Messages from '../views/Messages';
-import DashRouter from './DashRouter';
+
 
 const AppRouter = () => {
     
+      const dispatch = useDispatch();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token') || '';
+        dispatch(checkLogin(token));
     
+    }, [])
 
     return (
-        <BrowserRouter >
+        <BrowserRouter  >
         <Routes>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/*" element={<DashRouter/>}/>
+            <Route path="/login" element={
+                <PublicRoute>
+                    <Login/>
+                </PublicRoute>
+            }/>
+            <Route path="/*" element={
+                <PrivateRoute>
+                    <DashRouter/>
+                </PrivateRoute>
+            
+            }/>
+          
         </Routes>
     </BrowserRouter>
     )
