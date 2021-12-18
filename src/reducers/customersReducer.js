@@ -13,6 +13,12 @@ export const customerReducer = (state = initialStateCustomers , action) => {
 
         case types.logout:
             return {};
+        
+            case types.getCustomerByPin:
+                return{
+                    ...state,
+                    userHistoric: action.payload
+                }
             
         default:
             return state;

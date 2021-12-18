@@ -1,159 +1,89 @@
-import { Table, Tag, Space } from 'antd';
+import { Table, Tag, Space, Tooltip } from 'antd';
 import useCustomers from '../Hooks/useCustomers';
+
+//Drawer
+import DrawerHistoric from '../components/DrawerHistoric'
+
+//Icons
+import {FcViewDetails, FcFeedback, FcBusinesswoman, FcCellPhone, FcCopyleft, FcCopyright, FcOk, FcFlashOn} from 'react-icons/fc';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCustomerByPin } from '../actions/customers';
 
 
 const Customers = () => {
-
-  const {customers} = useCustomers();
-  console.log(customers);
+    //Redux
+    const {customers} = useCustomers();
+    const dispatch = useDispatch();
+    //handleDrawer
+    const [drawer, setDrawer] = useState({visible: false});
+    const showDrawer = (pin) =>{
+      
+      
+      dispatch(getCustomerByPin(pin))
+      setDrawer({visible:true})
+    };
+    const onClose = () => setDrawer({visible:false});
   
-
     
+    const columns = [
+      
+    {
+      title: renderIconWToolTip(FcBusinesswoman, 'Nombre del cliente'),
+      dataIndex: 'Nombre',
+      render: text => <p>{text}</p>,
+    },
+    {
+      title: renderIconWToolTip(FcCellPhone, 'Pin'),
+      dataIndex: 'Pin',
+      align: 'center',
+      render: text => <p>{text}</p>,
+    },
+    {
+      title: <Tooltip title="CapCode"><p className='flex justify-center items-center'> <FcCopyright size={"2em"}/><FcCopyleft size={"2em"}/></p></Tooltip>,
+      dataIndex: 'CapCode',
+      align: 'center',
+      render: text => <p>{text}</p>,
+    }, 
+    {
+      title: renderIconWToolTip(FcOk, 'Status del cliente'),
+      dataIndex: 'Estado',
+      align: 'center',
+      render: state=>  <Tag color={(state > 0) ? 'green' : 'volcano'} key={`${state}`}>{state === '0' ? "Inactivo" : "Activo"}</Tag>
+    },
+    {
+      title: renderIconWToolTip(FcFlashOn, "Acciones"),
+      key: 'action',
+      align: 'center',
+      render: (text, record) => (
+        <Space  size="middle">
+          <Tooltip title="Enviar Mensaje">
+            <FcFeedback size={'2em'}/>
+          </Tooltip>
+          <Tooltip title="Historico">
+            <FcViewDetails onClick={()=> showDrawer(record.Pin)} size={'2em'}/>
+          </Tooltip>
+        </Space>
+      ),
+    },
+    ]
+
+
     return (
         <div >
-            <Table columns={columns} dataSource={data} size="medium"/>
-            
+            <Table columns={columns} dataSource={customers} size="medium"  bordered/>
+            <DrawerHistoric drawer={drawer} onClose={onClose}/>
         </div>
     )
 }
 
 export default Customers
 
+const renderIconWToolTip = (Icon, tooltip , Icon2) => {
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-  {
-    key: '4',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '5',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '6',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-  {
-    key: '7',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '8',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '9',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-  {
-    key: '10',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '11',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '12',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
-
-
+  return <Tooltip title={tooltip}>
+            <p className='flex justify-center items-center'> 
+              <Icon size={"2em"}/>
+              </p>
+          </Tooltip>
+};

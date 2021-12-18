@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 //Redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { checkLogin } from '../actions/auth';
 
 //React Router
@@ -20,11 +20,10 @@ const AppRouter = () => {
     useEffect(() => {
         const token = localStorage.getItem('token') || '';
         dispatch(checkLogin(token));
-    
     }, [])
 
     return (
-        <BrowserRouter  >
+        <BrowserRouter basename = {process.env.PUBLIC_URL} >
         <Routes>
             <Route path="/login" element={
                 <PublicRoute>

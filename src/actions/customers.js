@@ -9,8 +9,30 @@ const setCustomers = (customers) => ({
 
 export const getCustomers = () => {
     return async(dispatch) => {
-        const customers = await (await fetchFunction('Cliente/clientes')).json();
-        console.log(customers);
-        dispatch(setCustomers(customers.data));
+
+        try {
+            const customers = await (await fetchFunction('Cliente/clientes')).json();
+            console.log(customers);
+            dispatch(setCustomers(customers.data));
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const getCustomerByPin = (pin) => {
+    return async(dispatch) => {
+        try {
+
+          const historic = await (await fetchFunction(`Cliente/clienteByPin?pin=${pin}`)).json();
+
+          if(historic.ok) dispatch({ type: types.getCustomerByPin,payload: historic.data});
+    
+        } catch (error) {
+            console.log(error);
+        }
+
+
     }
 }

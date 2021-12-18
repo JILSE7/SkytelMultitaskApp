@@ -10,7 +10,8 @@ const initialStateUser = {
 }
 
 const initialStateCustomers = {
-    users: []
+    users: [],
+    userHistoric: []
 }
 
 
