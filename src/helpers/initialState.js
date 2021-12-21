@@ -14,10 +14,23 @@ const initialStateCustomers = {
     userHistoric: []
 }
 
+const initialMessage = {
+    pin : "",
+    cu: "",
+    msg: "",
+    date: "",
+    user: ""
+};
+
+
+
+
+
 
 
 export {
     initialStateLogin,
     initialStateUser,
-    initialStateCustomers
+    initialStateCustomers,
+    initialMessage
 }

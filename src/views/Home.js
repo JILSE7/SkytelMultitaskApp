@@ -5,7 +5,7 @@ import LayoutComponent from '../components/Layout/Layout'
 const Home = () => {
     return (
        <LayoutComponent>
-           hola
+           <div className='borderView'></div>
            <Outlet/>
        </LayoutComponent>
     )

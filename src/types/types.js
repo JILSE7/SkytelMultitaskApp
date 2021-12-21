@@ -7,5 +7,9 @@ export const types = {
     //Customers
     getCustomers : '[customers] - Get',
     setCustomers : '[customers] - Set',
-    getCustomerByPin : '[customers] - GetByPin'
+    getCustomerByPin : '[customers] - GetByPin',
+
+    //Message
+    setMessage : '[message] - set',
+    sendMessage: '[message] - send'
 }

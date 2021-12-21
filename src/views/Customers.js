@@ -1,15 +1,23 @@
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Table, Tag, Space, Tooltip } from 'antd';
-import useCustomers from '../Hooks/useCustomers';
 
 //Drawer
 import DrawerHistoric from '../components/DrawerHistoric'
 
 //Icons
-import {FcViewDetails, FcFeedback, FcBusinesswoman, FcCellPhone, FcCopyleft, FcCopyright, FcOk, FcFlashOn} from 'react-icons/fc';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import {FcViewDetails, FcFeedback, 
+        FcBusinesswoman, FcCellPhone, 
+        FcCopyleft, FcCopyright, 
+        FcOk, FcFlashOn,
+        FcSearch
+      } from 'react-icons/fc';
+
+import useCustomers from '../Hooks/useCustomers';
 import { getCustomerByPin } from '../actions/customers';
 import { renderIconWToolTip } from '../helpers/drawer';
+import { useForm } from '../Hooks/useForm';
+
 
 
 const Customers = () => {
@@ -17,16 +25,35 @@ const Customers = () => {
     const {customers} = useCustomers();
     const dispatch = useDispatch();
 
-    //handleDrawer
+    //Hooks
     const [drawer, setDrawer] = useState({visible: false, pin:"", name: ""});
 
+    const [values, handleInputChange] = useForm({search:""});
+    const [customerFiltereds, setCustomerFiltereds] = useState([]);
+    
+    useEffect(() => {
+      if(customers){
+        setCustomerFiltereds(customers.filter(customer => customer.Nombre?.includes(values.search) || 
+                                     customer.Nombre?.includes(values.search[0].toUpperCase() +  values.search.slice(1)) || 
+                                     customer.Nombre?.includes(values.search.toUpperCase())||
+                                     customer.Pin.includes(values.search)
+                        ));
+      }
+
+      console.log(customerFiltereds);
+    }, [values, customers])
+
+    
+
+    //handleDrawer
     const showDrawer = (pin, name) =>{
       drawer.pin !== pin ? dispatch(getCustomerByPin(pin)): console.log("no es necesario llamamrme");
       setTimeout(() => setDrawer({visible:true, pin, name}), 150);
     };
-    
-    
     const onClose = () => setDrawer({...drawer,visible:false});
+
+    
+
     //dataTable
     const columns = [
       
@@ -73,7 +100,14 @@ const Customers = () => {
 
     return (
         <div >
-            <Table columns={columns} dataSource={customers} size="medium"  bordered/>
+            <div className='Header_Table_Customer flex  items-center justify-evenly'>
+              <h2>¿Quieres buscar a un usuario?</h2>
+              <div className='Header_Table_Customer_Search flex items-center'>
+                <input type={"text"} placeholder='username' value={values.search} name="search" onChange={handleInputChange}/>
+                <FcSearch size={"2em"}/>
+              </div>
+            </div>
+            <Table columns={columns} dataSource={(values.search) ? customerFiltereds : customers} size="medium"  bordered/>
             <DrawerHistoric drawer={drawer} onClose={onClose} name={drawer.name}/>
         </div>
     )

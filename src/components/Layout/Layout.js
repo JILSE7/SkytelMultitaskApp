@@ -53,8 +53,11 @@ const LayoutComponent = ({children}) => {
         </Sider>
         <Layout className="site-layout">
           <Header className="Layout_Header flex justify-between items-center" style={{ padding: 0 }} >
-            <img className="logo" src={user} />
-            <h1>Bienvenido @<span>{username}</span></h1>
+            <div className='flex'>
+              <p>{username}</p>
+              <img className="logo" src={user} />
+            </div>
+            <h1>Bienvenido</h1>
             <img className="logoCloud" src={logoHeader} />
             
           </Header>

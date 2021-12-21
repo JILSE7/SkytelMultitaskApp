@@ -1,7 +1,9 @@
+
 @import './utilities.scss';
 @import './layout.scss';
 @import './components/drawer.scss';
 @import './components/email.scss';
+@import './components/customers.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
 body{
@@ -104,6 +106,13 @@ body{
   
         }
     }
+}
+
+.borderView{
+    width: 95%;
+    height: 3px;
+    margin: 0 auto;
+    background-color: $azulSkytel;
 }
 
 /* .ant-table-thead, .ant-table table, 

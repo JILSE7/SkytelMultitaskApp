@@ -5,7 +5,7 @@ const { Option } = AutoComplete;
 
 
 
-const AutoCompleteUser = () => {
+const AutoCompleteUser = ({message,refInput}) => {
     const [result, setResult] = useState([]);
     const {customers = []} = useCustomers();
     
@@ -22,8 +22,7 @@ const AutoCompleteUser = () => {
   
     const handlerSelect = (e) => {
       console.log(e);
-    /*   console.log(e);
-      obj.usuario = e; */
+      message.pin = e;
     }
   
     const keyDown = (e) => {
@@ -47,7 +46,7 @@ const AutoCompleteUser = () => {
         className="form-control"
         onKeyDown = {keyDown}
         id='uid'
-        
+        ref={refInput}
       >
           {result.map((customer) => (
           <Option  key={customer.key} value={customer.Pin} >
