@@ -1,0 +1,44 @@
+.container_message{
+    width: 100%;
+    height: 95%;
+    
+    h1{
+        font-family:$fuenteSky;
+        color: $azulSkytel;        
+        font-size: 36px;
+        
+        margin: 0 auto;
+    }
+
+    
+    &_form{
+        width: 400px;
+        
+
+        textarea{
+            width: 350px;
+            min-height: 200px;
+            border: 1px solid #d9d9d9;
+            transition: all 300ms;
+            padding: 5px;
+
+            &:hover{
+                border-color: #1890ff;
+            }
+            &:focus{
+                border-color: #1890ff;
+                outline: none !important;
+            }
+        }
+
+        span{
+            font-size: 12px;
+            
+            &:hover{
+                color: $azulSkytel;
+            }
+        }
+        
+    }
+}
+

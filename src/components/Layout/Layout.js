@@ -53,8 +53,9 @@ const LayoutComponent = ({children}) => {
         </Sider>
         <Layout className="site-layout">
           <Header className="Layout_Header flex justify-between items-center" style={{ padding: 0 }} >
-            <h1>Bienvenido @<span>{username}</span></h1>
             <img className="logo" src={user} />
+            <h1>Bienvenido @<span>{username}</span></h1>
+            <img className="logoCloud" src={logoHeader} />
             
           </Header>
           <Content style={{ margin: '0 16px' }}>

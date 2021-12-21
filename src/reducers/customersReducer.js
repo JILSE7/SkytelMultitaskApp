@@ -17,7 +17,8 @@ export const customerReducer = (state = initialStateCustomers , action) => {
             case types.getCustomerByPin:
                 return{
                     ...state,
-                    userHistoric: action.payload
+                    userHistoric: action.payload[0],
+                    pin: action.payload[1]
                 }
             
         default:

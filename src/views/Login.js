@@ -56,7 +56,7 @@ const Login = () => {
         
            <h1>¡Hola!, Bienvenido de nuevo</h1>
            <div className="container_login_contact flex flex-col items-center">
-                <img src={logo} className="container_login_contact_image"/>
+                <img src={logo} className="container_login_contact_image" alt='logoSky'/>
                 <form className="container_login_contact_form flex flex-col items-center justify-between">
                     <div className="container_login_contact_form_item flex justify-center mb-5">
                         <FcAssistant className="icon"/>

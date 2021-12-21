@@ -27,7 +27,7 @@ export const getCustomerByPin = (pin) => {
 
           const historic = await (await fetchFunction(`Cliente/clienteByPin?pin=${pin}`)).json();
 
-          if(historic.ok) dispatch({ type: types.getCustomerByPin,payload: historic.data});
+          if(historic.ok) dispatch({ type: types.getCustomerByPin,payload: [historic.data , pin]});
     
         } catch (error) {
             console.log(error);

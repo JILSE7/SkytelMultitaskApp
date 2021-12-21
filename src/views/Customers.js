@@ -9,23 +9,25 @@ import {FcViewDetails, FcFeedback, FcBusinesswoman, FcCellPhone, FcCopyleft, FcC
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCustomerByPin } from '../actions/customers';
+import { renderIconWToolTip } from '../helpers/drawer';
 
 
 const Customers = () => {
     //Redux
     const {customers} = useCustomers();
     const dispatch = useDispatch();
+
     //handleDrawer
-    const [drawer, setDrawer] = useState({visible: false});
-    const showDrawer = (pin) =>{
-      
-      
-      dispatch(getCustomerByPin(pin))
-      setDrawer({visible:true})
+    const [drawer, setDrawer] = useState({visible: false, pin:"", name: ""});
+
+    const showDrawer = (pin, name) =>{
+      drawer.pin !== pin ? dispatch(getCustomerByPin(pin)): console.log("no es necesario llamamrme");
+      setTimeout(() => setDrawer({visible:true, pin, name}), 150);
     };
-    const onClose = () => setDrawer({visible:false});
-  
     
+    
+    const onClose = () => setDrawer({...drawer,visible:false});
+    //dataTable
     const columns = [
       
     {
@@ -61,7 +63,7 @@ const Customers = () => {
             <FcFeedback size={'2em'}/>
           </Tooltip>
           <Tooltip title="Historico">
-            <FcViewDetails onClick={()=> showDrawer(record.Pin)} size={'2em'}/>
+            <FcViewDetails onClick={()=> showDrawer(record.Pin, record.Nombre)} size={'2em'}/>
           </Tooltip>
         </Space>
       ),
@@ -72,18 +74,10 @@ const Customers = () => {
     return (
         <div >
             <Table columns={columns} dataSource={customers} size="medium"  bordered/>
-            <DrawerHistoric drawer={drawer} onClose={onClose}/>
+            <DrawerHistoric drawer={drawer} onClose={onClose} name={drawer.name}/>
         </div>
     )
 }
 
 export default Customers
 
-const renderIconWToolTip = (Icon, tooltip , Icon2) => {
-
-  return <Tooltip title={tooltip}>
-            <p className='flex justify-center items-center'> 
-              <Icon size={"2em"}/>
-              </p>
-          </Tooltip>
-};

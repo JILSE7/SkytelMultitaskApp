@@ -26,9 +26,13 @@
         background-color: white;
         padding: 0 50px !important;
         
-        height: 90px;
+        height: 120px;
         
-        border-bottom: 2px solid $azulSkytel;
+        
+        .logoCloud{
+            width: 130px;
+            height: 100px;
+        }   
         .logo{
             width: 70px;
             height: 70px;
@@ -42,7 +46,8 @@
         h1{
             color: $azulSkytel;
             font-size: 36px;
-            margin: 0 !important;
+            margin:0 0 0 50px;
+            text-decoration: underline;
         }
 
         svg{
