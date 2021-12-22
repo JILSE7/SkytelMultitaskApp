@@ -20,7 +20,7 @@ const AppRouter = () => {
     useEffect(() => {
         const token = localStorage.getItem('token') || '';
         dispatch(checkLogin(token));
-    }, [])
+    }, [dispatch])
 
     return (
         <BrowserRouter basename = {process.env.PUBLIC_URL} >

@@ -11,10 +11,15 @@ import useUser from '../Hooks/useUser';
 import { fetchFunction } from '../helpers/fetch';
 import { useDispatch } from 'react-redux';
 import { sendMessage, setMessage } from '../actions/message';
+import { useParams } from 'react-router-dom';
 
 
 
 const Messages = () => {
+
+    const {pin = false} = useParams();
+    
+
     //Redux
     const dispatch = useDispatch();
     //Hooks
@@ -25,6 +30,9 @@ const Messages = () => {
     //Submit
     const handleSubmit = async(e) => {
         e.preventDefault();
+        if(pin){
+            values.pin = pin;
+        }
         if(!values.pin){
          toastMessage("Falta el pin de destino");
          return;
@@ -38,6 +46,8 @@ const Messages = () => {
          values.date = generateDate();
          //Agregar usuario
          values.user = username
+
+         console.log(values);
          //Notificacion de envio de mensaje
          toastInfo();
          //Establecer el mensaje en la store
@@ -59,7 +69,7 @@ const Messages = () => {
             <div className='self-center'>
                 <form className='container_message_form flex flex-col items-center'>
                     <FcBusinesswoman size={"3em"}/>
-                    <AutoCompleteUser message={values}  />
+                    <AutoCompleteUser message={values} pinParam={pin} />
                     <FcSms size={"3em"}/>
                     <textarea placeholder='Escriba el mensaje' value={values.msg} name='msg' onChange={handleInputChange} />
                     <span className='duration-300'>Recuerda que un mensaje esta limitado a 500 caracteres</span>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import useCustomers from "../../Hooks/useCustomers";
-import { Input, AutoComplete, Tag } from "antd";
+import { AutoComplete, Tag } from "antd";
 const { Option } = AutoComplete;
 
 
 
-const AutoCompleteUser = ({message,refInput}) => {
+const AutoCompleteUser = ({message,pinParam = false}) => {
     const [result, setResult] = useState([]);
     const {customers = []} = useCustomers();
     
@@ -22,7 +22,7 @@ const AutoCompleteUser = ({message,refInput}) => {
   
     const handlerSelect = (e) => {
       console.log(e);
-      message.pin = e;
+      message.pin =  e;
     }
   
     const keyDown = (e) => {
@@ -41,12 +41,12 @@ const AutoCompleteUser = ({message,refInput}) => {
           
         }}
         onSearch={handleSearch}
-        placeholder="Buscar por pin o nombre de usuario"
+        placeholder={(pinParam) ? pinParam:"Buscar por pin o nombre de usuario"}
         onSelect={handlerSelect}
         className="form-control"
         onKeyDown = {keyDown}
+        disabled={pinParam ? true : false}
         id='uid'
-        ref={refInput}
       >
           {result.map((customer) => (
           <Option  key={customer.key} value={customer.Pin} >

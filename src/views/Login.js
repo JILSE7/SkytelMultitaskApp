@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/cloud.png'
 
 
@@ -9,9 +9,7 @@ import {FcAssistant, FcPrivacy, FcNext} from 'react-icons/fc';
 //State login
 import {initialStateLogin} from '../helpers/initialState'
 import { useForm } from '../Hooks/useForm';
-import { useSelector } from 'react-redux';
 import { startLogin } from '../actions/auth';
-import { fetchFunction } from '../helpers/fetch';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 

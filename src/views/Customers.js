@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Table, Tag, Space, Tooltip } from 'antd';
 
@@ -10,21 +10,28 @@ import {FcViewDetails, FcFeedback,
         FcBusinesswoman, FcCellPhone, 
         FcCopyleft, FcCopyright, 
         FcOk, FcFlashOn,
-        FcSearch
+        FcSearch, FcLock,
+        FcUnlock
       } from 'react-icons/fc';
 
 import useCustomers from '../Hooks/useCustomers';
 import { getCustomerByPin } from '../actions/customers';
 import { renderIconWToolTip } from '../helpers/drawer';
 import { useForm } from '../Hooks/useForm';
+import { useNavigate } from 'react-router-dom';
+import useUser from '../Hooks/useUser';
 
 
 
 const Customers = () => {
+    //React Router
+    const navigate = useNavigate();
+
     //Redux
     const {customers} = useCustomers();
+    const {rol} = useUser()
     const dispatch = useDispatch();
-
+    
     //Hooks
     const [drawer, setDrawer] = useState({visible: false, pin:"", name: ""});
 
@@ -39,8 +46,6 @@ const Customers = () => {
                                      customer.Pin.includes(values.search)
                         ));
       }
-
-      console.log(customerFiltereds);
     }, [values, customers])
 
     
@@ -87,11 +92,23 @@ const Customers = () => {
       render: (text, record) => (
         <Space  size="middle">
           <Tooltip title="Enviar Mensaje">
-            <FcFeedback size={'2em'}/>
+            <FcFeedback size={'2em'} onClick={() => navigate('/mensajes/' + record.Pin)}/>
           </Tooltip>
           <Tooltip title="Historico">
             <FcViewDetails onClick={()=> showDrawer(record.Pin, record.Nombre)} size={'2em'}/>
           </Tooltip>
+          {
+            rol === "admin" && (
+              (record.Estado === '1') ? 
+                      (<Tooltip title="Bloquear Servicio">
+                        <FcLock onClick={()=> showDrawer(record.Pin, record.Nombre)} size={'2em'}/>
+                      </Tooltip>) : (
+                        <Tooltip title="Desbloquear Servicio">
+                          <FcUnlock onClick={()=> showDrawer(record.Pin, record.Nombre)} size={'2em'}/>
+                        </Tooltip>
+                      )
+            )
+          }
         </Space>
       ),
     },
