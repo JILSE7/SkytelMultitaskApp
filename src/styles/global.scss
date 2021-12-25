@@ -1,10 +1,11 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 @import './utilities.scss';
 @import './layout.scss';
 @import './components/drawer.scss';
 @import './components/email.scss';
 @import './components/customers.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+@import './components/profile.scss';
 
 body{
     margin: 0;

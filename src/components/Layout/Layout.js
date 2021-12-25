@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 //components
 import { Layout, Menu } from 'antd';
+import Profile from '../../views/Profile';
 
 //Icons
 import {ImportOutlined,MailOutlined,
@@ -9,12 +11,15 @@ import {ImportOutlined,MailOutlined,
         RocketOutlined
       } from '@ant-design/icons';
 
+import ModalComponent from '../Modal';
+import useUser from '../../Hooks/useUser';
+import useModal from '../../Hooks/useModal';
+
 //Logos
 import logo from '../../assets/cloud2.png';
 import logoHeader from '../../assets/cloud.png';
 import user from '../../assets/use1.jpg';
-import { useNavigate } from 'react-router';
-import useUser from '../../Hooks/useUser';
+
 
 
 
@@ -25,12 +30,14 @@ const LayoutComponent = ({children}) => {
 
     const navigate = useNavigate();
 
-    const {username, rol, email} = useUser();
+    const {username, rol} = useUser();
+    const {isModalVisible, showModal, handleOk,handleCancel} = useModal();
     
 
     const [collapsed, setCollapsed] = useState(true);
     const onCollapse = () => setCollapsed(!collapsed);
     return (
+      <>
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} collapsedWidth={80}>
           
@@ -44,7 +51,7 @@ const LayoutComponent = ({children}) => {
               Clientes
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined/>} title="User">
-              <Menu.Item key="1" icon={<RocketOutlined />} onClick={() => navigate('/perfil')}>Mi Perfil</Menu.Item>
+              <Menu.Item key="1" icon={<RocketOutlined />} onClick={() => showModal()}>Mi Perfil</Menu.Item>
               <Menu.Item key="2" icon={<AreaChartOutlined />} onClick={() => navigate('/estadisticas')}>Mis Estadisticas</Menu.Item>
               {
 
@@ -74,6 +81,10 @@ const LayoutComponent = ({children}) => {
           <Footer style={{ textAlign: 'center' }}>&copy;Skytel</Footer>
         </Layout>
       </Layout>
+      <ModalComponent isModalVisible={isModalVisible} handleCancel={handleCancel} handleOk={handleOk}>
+        <Profile/>
+      </ModalComponent>
+      </>
     );
   
 }

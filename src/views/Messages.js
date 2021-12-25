@@ -4,11 +4,11 @@ import AutoCompleteUser from '../components/AutoComplete'
 import {FcBusinesswoman, FcSms,FcExternal} from 'react-icons/fc';
 import { useForm } from '../Hooks/useForm';
 import { initialMessage } from '../helpers/initialState';
-import { toast } from 'react-toastify';
+
 import { toastInfo, toastMessage } from '../helpers/toast';
 import { generateDate } from '../helpers/generateDate';
 import useUser from '../Hooks/useUser';
-import { fetchFunction } from '../helpers/fetch';
+
 import { useDispatch } from 'react-redux';
 import { sendMessage, setMessage } from '../actions/message';
 import { useParams } from 'react-router-dom';

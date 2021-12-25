@@ -1,6 +1,6 @@
 {
   "name": "multitaskv2",
-  "homepage": "http://localhost/skytelpanel",
+  
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,20 +1,15 @@
-import React, { useState } from 'react'
-import logo from '../assets/cloud.png'
-
-
-
-//Icons
-import {FcAssistant, FcPrivacy, FcNext} from 'react-icons/fc';
-
-//State login
-import {initialStateLogin} from '../helpers/initialState'
-import { useForm } from '../Hooks/useForm';
-import { startLogin } from '../actions/auth';
+import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-
-
+//State login
+import {initialStateLogin} from '../helpers/initialState'
+//Hooks
+import { useForm } from '../Hooks/useForm';
+import { startLogin } from '../actions/auth';
+//Icons
+import {FcAssistant, FcPrivacy, FcNext} from 'react-icons/fc';
+import logo from '../assets/cloud.png'
 
 
 const Login = () => {
