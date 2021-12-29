@@ -8,8 +8,16 @@ export const types = {
     getCustomers : '[customers] - Get',
     setCustomers : '[customers] - Set',
     getCustomerByPin : '[customers] - GetByPin',
+    deleteCustomers: '[customers] - DeleteCustomers',
 
     //Message
     setMessage : '[message] - set',
-    sendMessage: '[message] - send'
+    sendMessage: '[message] - send',
+
+    //Users - Admin
+    getUsers : '[users] - get',
+    setUsers: '[users] - set',
+    updateUser : '[users] - delete',
+    deleteUser : '[delete] - user'
+
 }

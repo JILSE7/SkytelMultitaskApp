@@ -19,6 +19,8 @@ import useModal from '../../Hooks/useModal';
 import logo from '../../assets/cloud2.png';
 import logoHeader from '../../assets/cloud.png';
 import user from '../../assets/use1.jpg';
+import { useDispatch } from 'react-redux';
+import { startLogOut } from '../../actions/auth';
 
 
 
@@ -27,8 +29,10 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const LayoutComponent = ({children}) => {
-
+    //Router
     const navigate = useNavigate();
+    //Redux
+    const dispatch = useDispatch();
 
     const {username, rol} = useUser();
     const {isModalVisible, showModal, handleOk,handleCancel} = useModal();
@@ -36,6 +40,9 @@ const LayoutComponent = ({children}) => {
 
     const [collapsed, setCollapsed] = useState(true);
     const onCollapse = () => setCollapsed(!collapsed);
+
+
+
     return (
       <>
       <Layout style={{ minHeight: '100vh' }}>
@@ -52,13 +59,13 @@ const LayoutComponent = ({children}) => {
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined/>} title="User">
               <Menu.Item key="1" icon={<RocketOutlined />} onClick={() => showModal()}>Mi Perfil</Menu.Item>
-              <Menu.Item key="2" icon={<AreaChartOutlined />} onClick={() => navigate('/estadisticas')}>Mis Estadisticas</Menu.Item>
+              
               {
 
                rol === "admin" && <Menu.Item key="3" onClick={() => navigate('/gestion')} icon={<SettingOutlined />} >Multitask</Menu.Item>
               }
             </SubMenu>
-            <Menu.Item key="6" icon={<ImportOutlined />}>
+            <Menu.Item key="6" icon={<ImportOutlined />} onClick={() => dispatch(startLogOut())}>
               Salir
             </Menu.Item>
             
@@ -67,7 +74,7 @@ const LayoutComponent = ({children}) => {
         </Sider>
         <Layout className="site-layout">
           <Header className="Layout_Header flex justify-between items-center" style={{ padding: 0 }} >
-            <div className='flex'>
+            <div className='Layout_Header_Profile flex'>
               <p>{username}</p>
               <img className="logo" src={user} alt='userImage'/>
             </div>

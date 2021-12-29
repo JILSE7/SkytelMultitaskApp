@@ -13,10 +13,9 @@ const Profile = () => {
             </div>
            <div className='container_profile_info flex flex-col items-start justify-evenly'>
                 
-                    <h5>Nombre <span>Said Mandujano</span></h5>
-                    <h5>Username <span>Said Mandujano</span></h5>
-                    <h5>Estatus <span>Said Mandujano</span></h5>
-                    <h5>Email <span>Said Mandujano</span></h5>
+                    <h5>Username <span>{user.username}</span></h5>
+                    <h5>Email <span>{user.email}</span></h5>
+                    <h5>Estatus <span className={(user.estatus != "1")? "inactivo": ""}>{(user.estatus != 1)? "Inactivo": "Activo"}</span></h5>
                 
            </div>
 

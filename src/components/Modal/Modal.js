@@ -8,7 +8,7 @@ const ModalComponent = ({isModalVisible, handleOk, handleCancel, children}) => {
       <>
       
         <Modal 
-            title="Basic Modal" 
+            title="SkyTel" 
             onOk={handleOk} 
             onCancel={handleCancel}
             visible={isModalVisible} 

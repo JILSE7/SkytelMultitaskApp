@@ -7,6 +7,7 @@ import { getCustomers } from "./customers";
 
 
 const loginUserStore = (user) => {
+    
     return {
         type: types.login,
         payload:user
@@ -18,10 +19,12 @@ const logOut = () => ({type: types.logout});
  
 export const startLogin = (data) => {    
     return async(dispatch) => {
+       
         const login = await (await fetchFunction('Login/login', data, 'POST')).json();
-        console.log(login);
+        
         if(login.status){
-            dispatch(loginUserStore(login.user));
+            const count = await (await fetchFunction('Email/countMessages')).json();
+            dispatch(loginUserStore({...login.user, ...count.result}));
             dispatch(getCustomers());
             return true;
         }
@@ -37,12 +40,22 @@ export const startLogin = (data) => {
 export const checkLogin = (token) => {
     return async(dispatch) => {
         const login = await (await fetchFunction('Login/ValidateToken',{},'PUT',token)).json();
-        
         if(login.status){
-            dispatch(loginUserStore(login.user));
+            const count = await (await fetchFunction('Email/countMessages')).json();
+            dispatch(loginUserStore({...login.user, ...count.result}));
             dispatch(getCustomers());
         }else{
-            dispatch(logOut);
+            dispatch(logOut());
         }
+    }
+}
+
+
+export const startLogOut = (navigate) => {
+    return (dispatch) => {
+        //Eliminando token
+        localStorage.removeItem('token');
+        //eliminando los datos de la sesion
+        dispatch(logOut());
     }
 }

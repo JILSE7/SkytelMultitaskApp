@@ -6,7 +6,8 @@ const initialStateLogin = {
 
 const initialStateUser = {
     login: false,
-    user: {}
+    user: {},
+    countMessage:{}
 }
 
 const initialStateCustomers = {
@@ -23,14 +24,15 @@ const initialMessage = {
 };
 
 
-
-
-
+const initialMultitask = {
+    users: []
+}
 
 
 export {
     initialStateLogin,
     initialStateUser,
     initialStateCustomers,
-    initialMessage
+    initialMessage,
+    initialMultitask
 }

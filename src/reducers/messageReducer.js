@@ -20,6 +20,11 @@ export const messageReducer = (state = initialMessage, action) => {
             ...action.payload
         };
 
+        case types.logout:
+            return{
+                initialMessage
+            }
+
         default: 
         return state;
     }

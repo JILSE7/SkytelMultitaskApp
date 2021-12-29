@@ -6,7 +6,7 @@ export const logReducer = (state = initialStateUser , action) => {
     
     switch (action.type) {
         case types.login:
-            const {username,email,rol, token} = action.payload
+            const {username,email,rol, token, estado, Asesores, skytelcom} = action.payload
             localStorage.setItem('token', token)
             return{
                 ...state,
@@ -14,8 +14,14 @@ export const logReducer = (state = initialStateUser , action) => {
                 user:{
                     username,
                     email,
-                    rol
+                    rol,
+                    estatus: estado
+                },
+                countMessage:{
+                    Asesores,
+                    skytelcom
                 }
+
             }
            
         case types.logout:

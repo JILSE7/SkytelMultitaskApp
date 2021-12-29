@@ -12,7 +12,7 @@ export const customerReducer = (state = initialStateCustomers , action) => {
             }
 
         case types.logout:
-            return {};
+            return {initialStateCustomers};
         
             case types.getCustomerByPin:
                 return{

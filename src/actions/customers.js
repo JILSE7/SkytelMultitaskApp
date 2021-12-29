@@ -5,14 +5,17 @@ import { types } from "../types/types";
 const setCustomers = (customers) => ({
     type:types.setCustomers,
     payload: customers
-})
+});
+
+export const deleteCustomers = () => ({
+    type: types.deleteCustomers
+});
 
 export const getCustomers = () => {
     return async(dispatch) => {
 
         try {
             const customers = await (await fetchFunction('Cliente/clientes')).json();
-            console.log(customers);
             dispatch(setCustomers(customers.data));
             
         } catch (error) {
@@ -23,7 +26,7 @@ export const getCustomers = () => {
 
 export const getCustomerByPin = (pin) => {
     return async(dispatch) => {
-        try {
+        try {   
 
           const historic = await (await fetchFunction(`Cliente/clienteByPin?pin=${pin}`)).json();
 
@@ -32,7 +35,6 @@ export const getCustomerByPin = (pin) => {
         } catch (error) {
             console.log(error);
         }
-
-
     }
 }
+
