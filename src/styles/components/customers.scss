@@ -1,5 +1,5 @@
 .Header_Table_Customer{
-    margin: 10px 0;
+    margin: 30px 0 0 10px;
     h2{
         font-family: $fuenteSky;
         
@@ -31,3 +31,19 @@
         }
     }
 }
+
+//TABLE
+/* .ant-table-tbody{
+    border-color: gray !important;
+
+}
+
+.ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tbody > tr > td{
+    border-color: rgb(65, 64, 64) !important;
+}
+
+.ant-table-tbody > tr > td {
+    border-color: rgb(65, 64, 64) !important;
+}
+
+ */

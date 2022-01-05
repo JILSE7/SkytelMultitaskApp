@@ -1,11 +1,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 @import './utilities.scss';
+//COMPONENTS
 @import './layout.scss';
 @import './components/drawer.scss';
 @import './components/email.scss';
 @import './components/customers.scss';
 @import './components/profile.scss';
+@import './components/register.scss';
+@import './components/edituserform.scss';
 
 body{
     margin: 0;
@@ -109,12 +112,12 @@ body{
     }
 }
 
-.borderView{
+/* .borderView{
     width: 95%;
     height: 3px;
     margin: 0 auto;
     background-color: $azulSkytel;
-}
+} */
 
 /* .ant-table-thead, .ant-table table, 
 .ant-table-thead > tr > th{

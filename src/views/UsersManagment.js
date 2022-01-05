@@ -1,18 +1,32 @@
 import { Space, Table, Tag, Tooltip } from 'antd'
+import { useState } from 'react';
 import { useEffect } from 'react'
-import { FcAddressBook, FcBusinesswoman, FcCalendar, FcCellPhone, FcCopyleft, FcCopyright, FcFeedback, FcFlashOn, FcKey, FcLock, FcOk, FcViewDetails } from 'react-icons/fc'
-import { useDispatch, useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
-import { getUsers } from '../actions/users'
-import { renderIconWToolTip } from '../helpers/drawer'
+import { FcAddressBook, FcBusinesswoman, 
+         FcCalendar,FcClock,FcFeedback, 
+         FcFlashOn, FcKey, 
+         FcOk, FcSupport, FcViewDetails 
+}from 'react-icons/fc'
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getUsers } from '../actions/users';
+import DrawerGeneric from '../components/DrawerGeneric';
+import { renderIconWToolTip } from '../helpers/drawer';
 
 
 
 const UsersManagment = () => {
-    //Store
-    const {users:multitask} = useSelector(state => state.usersMultitask);
     //Redux
     const dispatch = useDispatch();
+    //Store
+    const {users:multitask = []} = useSelector(state => state.usersMultitask);
+    //States
+    const [drawer, setDrawer] = useState({visible: false});
+    //Handlers
+    const showDrawer = (pin, name) =>{
+      setTimeout(() => setDrawer({visible:true, pin, name}), 150);
+    };
+    const onClose = () => setDrawer({...drawer,visible:false});
     
      //dataTable
      const columns = [
@@ -41,10 +55,17 @@ const UsersManagment = () => {
           render: state=>  <Tag color={(state > 0) ? 'green' : 'volcano'} key={`${state}`}>{state === '0' ? "Inactivo" : "Activo"}</Tag>
         },
         {
-            title: renderIconWToolTip(FcCalendar, 'Ultimo inicio de sesión'),
+          title: renderIconWToolTip(FcCalendar, 'Alta del usuario'),
+          dataIndex: 'Alta_Usuario',
+          align: 'center',
+          render: (text, record) =>  <p key={record.Id}>{text}</p>,
+          
+        },
+        {
+            title: renderIconWToolTip(FcClock, 'Ultimo inicio de sesión'),
             dataIndex: 'Ultimo_Login',
             align: 'center',
-            render: (text, record) =>  <p key={record.Id}>{text}</p>,
+            render: (text, record) =>  <p key={record.Id}>{(text) ? text : `No ha iniciado sesion`}</p>,
             
           },
         {
@@ -53,11 +74,8 @@ const UsersManagment = () => {
           align: 'center',
           render: (text, record) => (
             <Space  size="middle">
-              <Tooltip title="Enviar Mensaje">
-                <FcFeedback size={'2em'} onClick={() => Navigate('/mensajes/' + record.Pin)}/>
-              </Tooltip>
-              <Tooltip title="Historico">
-                <FcViewDetails size={'2em'}/>
+              <Tooltip title="Modificar usuario">
+                <FcSupport size={'2em'} onClick={showDrawer} />
               </Tooltip>
             </Space>
           ),
@@ -80,7 +98,7 @@ const UsersManagment = () => {
               </div>
             </div>
             <Table columns={columns} dataSource={multitask}  size="medium"  bordered/>
-            {/* <DrawerHistoric drawer={drawer} onClose={onClose} name={drawer.name}/> */}
+            <DrawerGeneric drawer={drawer} onClose={onClose} name={drawer.name}/> 
         </div>
     )
 }

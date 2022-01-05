@@ -46,11 +46,12 @@ const DrawerHistoric = ({drawer, onClose, name}) => {
     return (
         <Drawer
         title={`Historial de mensajes de: ${name}`}
-        placement={'bottom'}
+        placement={'left'}
         closable={true}
         onClose={onClose}
         visible={drawer.visible}
         key={drawer.placement}
+        width={"800"}
       >
         <Table columns={columns} dataSource={customer.userHistoric}  expandable={{
       rowExpandable: record => record.Pin !== null,

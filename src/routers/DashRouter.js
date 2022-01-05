@@ -3,6 +3,8 @@ import Customers from "../views/Customers"
 import Home from "../views/Home"
 import Messages from "../views/Messages"
 import Profile from "../views/Profile"
+import RegisterCustomer from "../views/RegisterCustomer"
+import RegisterUser from "../views/RegisterUser"
 import Stadistics from "../views/Stadistics"
 import UsersManagment from "../views/UsersManagment"
 
@@ -18,6 +20,8 @@ const DashRouter = () => {
                 <Route path="perfil" element={<Profile/>}/>
                 <Route path="estadisticas" element={<Stadistics/>}/>
                 <Route path="gestion" element={<UsersManagment/>}/>
+                <Route path="registro-empleado" element={<RegisterUser/>}/>
+                <Route path="registro-cliente" element={<RegisterCustomer/>}/>
             </Route>
         </Routes>
         

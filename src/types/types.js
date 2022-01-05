@@ -13,11 +13,13 @@ export const types = {
     //Message
     setMessage : '[message] - set',
     sendMessage: '[message] - send',
+    setNewCountMessages: '[message] - sent',
 
     //Users - Admin
     getUsers : '[users] - get',
     setUsers: '[users] - set',
-    updateUser : '[users] - delete',
-    deleteUser : '[delete] - user'
+    updateUser : '[users] - update',
+    deleteUser : '[users] - delete',
+    registerUser: "[users] - NewUserRegistered"
 
 }

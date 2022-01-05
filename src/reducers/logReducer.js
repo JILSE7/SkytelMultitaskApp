@@ -6,7 +6,7 @@ export const logReducer = (state = initialStateUser , action) => {
     
     switch (action.type) {
         case types.login:
-            const {username,email,rol, token, estado, Asesores, skytelcom} = action.payload
+            const {username,email,rol, token, estado, imagen,Asesores, skytelcom} = action.payload
             localStorage.setItem('token', token)
             return{
                 ...state,
@@ -15,23 +15,32 @@ export const logReducer = (state = initialStateUser , action) => {
                     username,
                     email,
                     rol,
-                    estatus: estado
+                    estatus: estado,
+                    imagen
                 },
                 countMessage:{
                     Asesores,
                     skytelcom
                 }
 
-            }
+            };
            
         case types.logout:
             return {initialStateUser};
+
+        case types.setNewCountMessages: 
+            return{
+                ...state,
+                countMessage:{
+                   ...action.payload
+                }
+            };
 
         case types.checkLog:
             console.log(action.payload);
             return{
                 ...state
-            }            
+            };            
             
         default:
             return state;

@@ -38,3 +38,54 @@ export const getCustomerByPin = (pin) => {
     }
 }
 
+
+export const unlockService = (pin) => {
+    return async(dispatch,store) => {
+        
+        console.log("tengo de desbloquear a" + pin);
+        const resp = await (await fetchFunction(`Email/unlockedMessages`, {pin}, "PUT")).json();
+        
+
+        if(resp){
+            try {
+             const customers = await (await fetchFunction('Cliente/clientes')).json();
+             dispatch(setCustomers(customers.data));
+            } catch (error) {
+             console.log(error);   
+            }
+        }
+        
+
+
+    }
+}
+
+
+export const lockService = (pin) => {
+    return async(dispatch,store) => {
+        
+
+        try {
+            const resp = await (await fetchFunction(`Email/lockedMessages`, {pin}, "PUT")).json();
+            console.log(resp);
+    
+            if(resp){
+                try {
+                 const customers = await (await fetchFunction('Cliente/clientes')).json();
+                 dispatch(setCustomers(customers.data));
+                    
+                } catch (error) {
+                 console.log(error);   
+                }
+            }
+            
+            
+        } catch (error) {
+            console.log(error);
+            //todo alert
+        }
+        
+        
+    }
+}
+

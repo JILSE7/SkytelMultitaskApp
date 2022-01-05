@@ -14,23 +14,23 @@ const Home = () => {
            <div className='borderView'></div>
            {
                pathname === "/" && (
-                   <>
-                    <section style={{height: "100%"}} className='flex flex-col justify-around items-center'>
+                   <div style={{margin:"0 auto", height:"100%", marginTop:"25px"}} className='flex justify-center'>
+                    <section style={{height: "90%",width:"80%", backgroundColor:"#e6e9f2", borderRadius: "5px"}} className='flex flex-col justify-around items-center'>
                         <h1 className='sendMessageTitle'>Numero de mensajes enviados</h1>
                         <div className='w-full flex justify-around'>
                             <div className='countMessages'>
                                 <FcCustomerSupport size={"4em"}/>
                                 <h2 className='text-center'>{countMessage.Asesores}</h2>
-                                <h3>Mensajes enviados por Asesores</h3>
+                                <h3>Enviados por Asesores</h3>
                             </div>
                             <div className='countMessages'>
                                 <FcMindMap size={"4em"}/>
                                 <h2 className='text-center'>{countMessage.skytelcom}</h2>
-                                <h3>Mensajes enviados por Skytel.com</h3>
+                                <h3>Enviados por Skytel.com</h3>
                             </div>
                         </div>
                     </section>
-                   </>
+                   </div>
                )
            }
             

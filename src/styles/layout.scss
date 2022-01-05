@@ -1,16 +1,18 @@
-.ant-layout-sider, .ant-menu.ant-menu-dark{
+.ant-layout-sider,.ant-menu.ant-menu-dark{
     background-color: $azulSkytel !important;
+}
 
-    
-    
- 
+.ant-menu-vertical .ant-menu-submenu-selected, .ant-menu-vertical-left .ant-menu-submenu-selected, .ant-menu-vertical-right .ant-menu-submenu-selected {
+    background-color: transparent !important;
 }
 .ant-layout{
     background-color: white;
     justify-content: center;
 }
 
-
+.ant-layout-sider-trigger{
+    height: 60px !important;
+}
 /* .ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-has-trigger{
     min-width: 150px !important;
     max-width: 150px !important;
@@ -26,38 +28,41 @@
         background-color: white;
         padding: 0 50px !important;
         height: 120px;
+        
+        box-shadow: -3px 9px 8px -1px rgba(179, 179, 179, 0.59);
+        
+        
 
         &_Profile{
-            border: 3px  solid $azulSkytel;
-            border-left: none;
-            border-top: none;
+            background-color: $azulSkytel;
             border-radius: 5px;
             padding: 5px;
             color: white;
              p{
-                 color: $azulSkytel;
+                 color: white;
                  margin: 0;
-                 padding: 2px;
-                 font-size: 16px;
+                 padding: 2px 5px;
+                 font-size: 12px;
                  font-family: $fuenteSky;
+                 background-color: $azulSkytel;
+                 border-bottom: 2px solid white;
+                 height: 45px;
                  
              }
         }
         
-        
-        .logoCloud{
-            width: 140px;
-            height: 100px;
-        }   
+    
         .logo{
             width: 70px;
             height: 70px;
             border-radius: 50%;
+            padding: 1px;
         }
         
         img{
             width: 100px;
             height: 70px;
+            
         }
         h1{
             color: $azulSkytel;
@@ -73,6 +78,21 @@
 
    
 }
+
+.Footer{
+    background-color: #001529;
+    height: 60px;
+    .logoCloud{
+        padding: 7px;
+        width: 70px;
+        height: 50px;
+    }
+    p{
+        margin: 0;
+        color: $azulSkytel;
+    }
+}
+
 
 
 .sendMessageTitle{
@@ -90,7 +110,7 @@
     
     h2{
         color: $azulSkytel;
-        font-size: 78px;
+        font-size: 38px;
         margin: 0;
     }
 

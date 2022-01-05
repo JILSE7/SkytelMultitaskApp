@@ -1,0 +1,63 @@
+.container_edit{
+    background-color: white;
+    height: 100%;
+
+
+        &_form{
+        border-radius: 5px;
+        margin-top: 30px;
+        width: 100%;
+        height: 40%;
+        border: 1px solid black;
+        height: 80%;
+        
+
+             
+                &_input{
+                    width: 180px;
+                    height: 30px;
+                    border: none !important;
+                    border-bottom: 2px solid $azulSkytel !important;
+                    color: $azulSkytel;
+                    text-align: center;
+                    background-color: transparent !important;
+                    outline:none !important;
+                    outline-offset: 0;    
+                    transition: all 300ms;
+                    &::placeholder{
+                        color: gray;
+                        text-align: center;
+                    }
+
+                    
+                    
+                
+
+                .icon{
+                    
+                    position: absolute;
+                    bottom: 8px;
+                    left:10px;
+                    font-size: 28px;
+                }
+
+
+
+                &:hover{
+                    width: 300px;
+                    outline: none;
+                }
+            }
+            .icon-next{
+                    color: red !important;
+                    font-size: 35px;
+                    transition: all 300ms ease-in-out;
+                    &:hover{
+                        transform: scale(1.4);
+                    }
+            }
+
+  
+        }
+    
+}

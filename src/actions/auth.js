@@ -16,6 +16,8 @@ const loginUserStore = (user) => {
 
 
 const logOut = () => ({type: types.logout});
+
+export const setNewCountMessages = (newMessages ) => ({type:types.setNewCountMessages, payload:newMessages});
  
 export const startLogin = (data) => {    
     return async(dispatch) => {
@@ -26,7 +28,10 @@ export const startLogin = (data) => {
             const count = await (await fetchFunction('Email/countMessages')).json();
             dispatch(loginUserStore({...login.user, ...count.result}));
             dispatch(getCustomers());
-            return true;
+            return {
+                ok: true,
+                user: login.user
+            };
         }
         
         //Mostrar alerta

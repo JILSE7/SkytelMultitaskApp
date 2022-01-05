@@ -10,6 +10,7 @@ import { startLogin } from '../actions/auth';
 //Icons
 import {FcAssistant, FcPrivacy, FcNext} from 'react-icons/fc';
 import logo from '../assets/cloud.png'
+import { toastMessage } from '../helpers/toast';
 
 
 const Login = () => {
@@ -39,7 +40,10 @@ const Login = () => {
         console.log(login);
         
         // eslint-disable-next-line no-unused-expressions
-        login ? navigate('/',{replace: true}): null;
+        if(login.ok){
+            navigate('/',{replace: true});
+            toastMessage(`Has iniciado sesion ${login.user.username}`,true, "top-left")
+        }   
         
     }
 

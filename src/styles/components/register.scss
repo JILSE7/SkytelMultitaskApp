@@ -1,0 +1,48 @@
+.title{
+    color: $azulSkytel;
+    font-size: 26px;
+    font-weight: bold;
+}
+.container_register{
+    width: 100%;
+    height: 80%;
+
+
+    &_form{
+        background-color: $fondo;
+        border-radius: 5px;
+        width: 450px;
+        height: 600px;
+
+        h3{
+            color: $azulSkytel;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        input{
+            width: 180px;
+            height: 30px;
+            border: none !important;
+            border-bottom: 2px solid $azulSkytel !important;
+            color: $azulSkytel;
+            text-align: center;
+            background-color: transparent !important;
+            outline:none !important;
+            outline-offset: 0;
+            transition: all 300ms;    
+            &::placeholder{
+                color: gray;
+                text-align: center;
+            }
+
+            &:hover{
+                width: 200px;
+                outline: none;
+            }
+
+            
+            
+        }
+    }
+}

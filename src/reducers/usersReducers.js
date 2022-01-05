@@ -19,7 +19,8 @@ const usersReducers = (state = initialMultitask,action) => {
         return state;
 
         case types.deleteUser:
-            
+            return state;
+        case types.registerUser:
             return state;
         case types.logout:
             return{

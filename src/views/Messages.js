@@ -49,7 +49,7 @@ const Messages = () => {
 
          console.log(values);
          //Notificacion de envio de mensaje
-         toastInfo();
+         toastInfo('Enviando Mensaje');
          //Establecer el mensaje en la store
          dispatch(setMessage(values));
          //Mandando el mensaje
