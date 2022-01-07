@@ -12,8 +12,6 @@ const badLoginAlert = () => {
 
 
 const lockAlert = async(nombre,pin, lock = true) => {
-
-    
     
     const isConfirmed  = await Swal.fire({
             title:(lock) ?  `¿Estás seguro de suspender el servicio de de ${nombre} - ${pin} ` : `¿Estás seguro de reactivar el servicio de ${nombre} - ${pin}`,
@@ -30,10 +28,70 @@ const lockAlert = async(nombre,pin, lock = true) => {
           })
     
     return isConfirmed;
+};
+
+
+const changePasswordAlert = async() => {
+  const { value: password } = await Swal.fire({
+    title: 'Ingrese la nueva contraseña',
+    input: 'password',
+    inputLabel: 'Pida al usuario que ingrese su nueva contraseña',
+    inputPlaceholder: 'Nueva contraseña',
+    inputAttributes: {
+      maxlength: 10,
+      autocapitalize: 'off',
+      autocorrect: 'off'
+    }
+  })
+  
+  if (password) {
+    const confirm = await Swal.fire({
+        title: `Entered password: ${password}`,
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Actualizar',
+        denyButtonText: `Cancelar`,
+      });
+
+      if(confirm.isConfirmed) return password;
+  }
+};
+
+
+const saveAction = (msg) =>{
+  return Swal.fire(`Excelente, ${msg}`, '', 'success')
+}
+
+
+const selectPicture = async(setFileState) => {
+  const { value: file } = await Swal.fire({
+    title: 'Selecciona tu foto',
+    input: 'file',
+    inputAttributes: {
+      'accept': 'image/*',
+      'aria-label': 'Selecciona tu foto'
+    }
+  });
+  if (file) {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      Swal.fire({
+        title: '¿Esta sera tu foto de perfil?',
+        imageUrl: e.target.result,
+        imageAlt: 'The uploaded picture'
+      }).then(({isConfirmed}) => {
+          if(isConfirmed) setFileState(file);
+      })
+    }
+    reader.readAsDataURL(file)
+  }
 }
 
 
 export {
     badLoginAlert,
-    lockAlert
+    changePasswordAlert,
+    saveAction,
+    lockAlert,
+    selectPicture
 }

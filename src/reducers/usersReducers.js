@@ -8,16 +8,29 @@ const usersReducers = (state = initialMultitask,action) => {
     switch (action.type) {
         case types.setUsers:
             const users = action.payload
-            console.log(users);
         return{
             users: [...users]
         };
 
+        case types.activeUser:
+        return{
+            ...state, 
+            active: true,
+            activeUser: {...action.payload},
+        };
+
+        case types.inactiveUser: 
+        return {
+            ...state,
+            active: false,
+            activeUser : {}
+        };
+
         case types.updateUser:
-            const updateUser = action.payload;
-            console.log(updateUser);
         return state;
 
+        case types.updateUserPassword:
+            return state;
         case types.deleteUser:
             return state;
         case types.registerUser:

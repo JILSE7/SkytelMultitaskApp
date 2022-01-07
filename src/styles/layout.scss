@@ -13,61 +13,49 @@
 .ant-layout-sider-trigger{
     height: 60px !important;
 }
-/* .ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-has-trigger{
-    min-width: 150px !important;
-    max-width: 150px !important;
-    .ant-layout-sider-trigger{
-        min-width: 150px !important;
-    max-width: 150px !important;
-    }
-} */
+
 
 .Layout{
 
     &_Header{
         background-color: white;
         padding: 0 50px !important;
-        height: 120px;
-        
+        height: 110px;
         box-shadow: -3px 9px 8px -1px rgba(179, 179, 179, 0.59);
         
-        
-
         &_Profile{
-            background-color: $azulSkytel;
+            background-color: $fondo;
             border-radius: 5px;
+            
             padding: 5px;
             color: white;
              p{
-                 color: white;
-                 margin: 0;
-                 padding: 2px 5px;
-                 font-size: 12px;
+                 color: $azulSkytel;
+                 margin: 0 0 20px 0;
+                 font-size: 14px;
                  font-family: $fuenteSky;
-                 background-color: $azulSkytel;
-                 border-bottom: 2px solid white;
+                 border-bottom: 2px solid $azulSkytel;
                  height: 45px;
-                 
              }
         }
         
     
         .logo{
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             padding: 1px;
         }
         
         img{
-            width: 100px;
+            width: 70px;
             height: 70px;
             
         }
         h1{
             color: $azulSkytel;
             font-size: 36px;
-            margin:0 0 0 -50px;
+            margin:0 0 0 60px;
             
         }
 
@@ -107,6 +95,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px;
+    border-radius: 25px;
+    transition: all 300ms;
+    &:hover{
+        
+        background-color: $azulSkytel;
+        color: white;
+        transform: scale(1.5);
+
+        h2,h3{
+            color: white;
+        }
+        
+    }
     
     h2{
         color: $azulSkytel;

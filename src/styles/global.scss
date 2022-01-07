@@ -9,6 +9,7 @@
 @import './components/profile.scss';
 @import './components/register.scss';
 @import './components/edituserform.scss';
+@import './components/wait.scss';
 
 body{
     margin: 0;
@@ -31,7 +32,6 @@ body{
     }
     
     &_contact{
-        
         border-radius: 5px;
         width: 50%;
         height: 70%;

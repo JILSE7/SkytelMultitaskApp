@@ -2,34 +2,43 @@
     width: 100%;
     height: 50vh;
     display: flex;
+    border-radius: 25px;
+    
+    background-color: $fondo;
     
     &>div{
-        width: 50%;
+        width: 40%;
         
+    }
+    & >div:nth-child(1){
+        width: 50%;
     }
 
     &_photo{
-      
+      padding: 5px;
         img{
-            width: 50%;
-            height: 100%;
+            width: 70%;
+            height: 85%;
             border-radius: 50%;
             -webkit-box-shadow: 3px 24px 50px -12px #000000; 
             box-shadow: 3px 24px 50px -12px #000000;
+            transition: all 300ms;
+            &:hover{
+                transform: scale(1.5);
+            }
         }
     }
 
     &_info{
         
         h5{
-            margin-left: 50px;
-            font-size: 35px;
+            font-size: 30px;
             font-weight: bold;
             color: $azulSkytel;
 
             span{
                 font-weight: normal;
-                font-size: 30px;
+                font-size: 20px;
             }
         }
 
@@ -37,7 +46,19 @@
             color: rgb(160, 3, 3);
         }
     }
+}
 
-  
- 
+.ant-modal-content {
+    background-color: transparent !important;
+    
+}
+
+.ant-modal-header{
+    background-color: $azulSkytel !important;
+    text-align: center;
+    
+
+}
+.ant-modal-title{
+    color: white;
 }

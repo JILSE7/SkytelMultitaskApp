@@ -25,7 +25,9 @@ const initialMessage = {
 
 
 const initialMultitask = {
-    users: []
+    users: [],
+    active: false,
+    activeUser:{}
 };
 
 const initialNewUser = {
@@ -37,6 +39,14 @@ const initialNewUser = {
     Estado: ""
 }
 
+const initialUpdateUser = {
+    Username: "",
+    Email: "",
+    Rol: "",
+    Estado: "",
+    Imagen: ""
+}
+
 
 export {
     initialStateLogin,
@@ -44,5 +54,7 @@ export {
     initialStateCustomers,
     initialMessage,
     initialMultitask,
-    initialNewUser
+    initialNewUser,
+    initialUpdateUser
+    
 }

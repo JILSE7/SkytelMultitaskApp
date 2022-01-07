@@ -1,5 +1,4 @@
 import { Modal } from 'antd';
-import React, { useState } from 'react'
 
 const ModalComponent = ({isModalVisible, handleOk, handleCancel, children}) => {
    
@@ -8,11 +7,11 @@ const ModalComponent = ({isModalVisible, handleOk, handleCancel, children}) => {
       <>
       
         <Modal 
-            title="SkyTel" 
+            title="SkyTel - Mi Perfil" 
             onOk={handleOk} 
             onCancel={handleCancel}
             visible={isModalVisible} 
-            width={"100vw"}
+            width={"60vw"}
             >
           
           {children}

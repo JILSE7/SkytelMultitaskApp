@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 //Redux
 import { useDispatch } from 'react-redux';
 import { checkLogin } from '../actions/auth';
@@ -11,16 +11,21 @@ import PublicRoute from './PublicRoute';
 
 //Views
 import Login from '../views/Login'
+import Waiting from '../components/Waiting';
 
 
 const AppRouter = () => {
     
       const dispatch = useDispatch();
+      const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         const token = localStorage.getItem('token') || '';
-        dispatch(checkLogin(token));
-    }, [dispatch])
+        dispatch(checkLogin(token, setLoading));
+    }, [dispatch]);
+
+    if(loading) return <Waiting/>;
 
     return (
         <BrowserRouter basename = {process.env.PUBLIC_URL} >

@@ -2,7 +2,7 @@ import { Drawer } from "antd"
 import EditFormUser from "../EditFormUser"
 
 
-const DrawerGeneric = ({drawer, onClose}) => {
+const DrawerGeneric = ({drawer, onClose, user}) => {
     return (
         <Drawer
         title={`Editar`}
@@ -13,7 +13,7 @@ const DrawerGeneric = ({drawer, onClose}) => {
         key={drawer.placement}
         width={"800"}
       >
-        <EditFormUser/>
+        <EditFormUser drawer={drawer}/>
     
       </Drawer>
     )

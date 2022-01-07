@@ -32,13 +32,16 @@ const Customers = () => {
     const navigate = useNavigate();
 
     //Redux
+    const dispatch = useDispatch();
+    
+    //CustomHooks
     const {customers} = useCustomers();
     const {rol} = useUser()
-    const dispatch = useDispatch();
     
     //Hooks
     const [drawer, setDrawer] = useState({visible: false, pin:"", name: ""});
     const [values, handleInputChange] = useForm({search:""});
+    //State
     const [customerFiltereds, setCustomerFiltereds] = useState([]);
 
     
@@ -75,19 +78,19 @@ const Customers = () => {
       {
         title: renderIconWToolTip(FcBusinesswoman, 'Nombre del cliente'),
         dataIndex: 'Nombre',
-        render: text => <p>{text}</p>,
+        render: text => <p className='bg-sky-100 rounded-lg'>{text}</p>,
       },
       {
         title: renderIconWToolTip(FcCellPhone, 'Pin'),
         dataIndex: 'Pin',
         align: 'center',
-        render: text => <p>{text}</p>,
+        render: text => <p className='bg-sky-100 rounded-lg'>{text}</p>,
       },
       {
         title: <Tooltip title="CapCode"><p className='flex justify-center items-center'> <FcCopyright size={"2em"}/><FcCopyleft size={"2em"}/></p></Tooltip>,
         dataIndex: 'CapCode',
         align: 'center',
-        render: text => <p>{text}</p>,
+        render: text => <p className='bg-sky-100 rounded-lg'>{text}</p>,
       }, 
       {
         title: renderIconWToolTip(FcOk, 'Status del cliente'),
@@ -132,11 +135,11 @@ const Customers = () => {
 
 
     return (
-        <div >
+        <div>
             <div className='Header_Table_Customer flex  items-center justify-evenly'>
               <h2>¿Quieres buscar a un usuario?</h2>
               <div className='Header_Table_Customer_Search flex items-center'>
-                <input type={"text"} placeholder='username' value={values.search} name="search" onChange={handleInputChange}/>
+                <input type={"text"} placeholder='Nombre, Pin o Username' value={values.search} name="search" onChange={handleInputChange}/>
                 <FcSearch size={"2em"}/>
               </div>
             </div>

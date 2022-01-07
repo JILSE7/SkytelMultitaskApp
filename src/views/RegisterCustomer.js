@@ -1,16 +1,15 @@
-import { Select } from 'antd';
-import { useState } from 'react';
-import { FcAddressBook, FcAssistant, FcEngineering, FcKey, FcNext, FcSelfServiceKiosk } from 'react-icons/fc';
+//import { Select } from 'antd';
+import { FcAddressBook, FcAssistant, FcKey, FcNext, FcSelfServiceKiosk } from 'react-icons/fc';
 import { initialNewUser } from '../helpers/initialState';
 import { useForm } from '../Hooks/useForm';
 
-const { Option } = Select;
+//const { Option } = Select;
 
 const RegisterCustomer = () => {
-    const [values, handleInputChange] = useForm(initialNewUser);
-    function handleChange(value) {
+    const [, handleInputChange] = useForm(initialNewUser);
+   /*  function handleChange(value) {
         if(value !== "Seleccione un tipo")values.Rol = value;
-      }
+      } */
     return (
         <>
         <h2 className='title text-center mt-5'>Nuevos Clientes</h2>

@@ -42,21 +42,26 @@ export const startLogin = (data) => {
 }
 
 
-export const checkLogin = (token) => {
+export const checkLogin = (token, setLoading) => {
     return async(dispatch) => {
         const login = await (await fetchFunction('Login/ValidateToken',{},'PUT',token)).json();
         if(login.status){
             const count = await (await fetchFunction('Email/countMessages')).json();
-            dispatch(loginUserStore({...login.user, ...count.result}));
-            dispatch(getCustomers());
+
+            setTimeout(() => {
+                setLoading(false);
+                dispatch(loginUserStore({...login.user, ...count.result}));
+                dispatch(getCustomers());
+            }, 600);
         }else{
             dispatch(logOut());
         }
+        
     }
 }
 
 
-export const startLogOut = (navigate) => {
+export const startLogOut = () => {
     return (dispatch) => {
         //Eliminando token
         localStorage.removeItem('token');

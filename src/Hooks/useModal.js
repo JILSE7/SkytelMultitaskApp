@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import{ useState } from 'react'
 
 const useModal = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);

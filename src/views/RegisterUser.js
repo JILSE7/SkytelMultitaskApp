@@ -1,7 +1,10 @@
 import { Select } from 'antd';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { FcAddressBook, FcAssistant, FcEngineering, FcKey, FcNext, FcPanorama } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
-import { startRegisterUser } from '../actions/users';
+import { getUsers, startRegisterUser } from '../actions/users';
+import { selectPicture } from '../helpers/alert';
 import { initialNewUser } from '../helpers/initialState';
 import { toastInfo, toastMessage } from '../helpers/toast';
 import { userStoreVerify } from '../helpers/usersVeify';
@@ -13,12 +16,17 @@ const RegisterUser = () => {
     //REDUX
     const dispatch = useDispatch();
     const {users} = useSelector(state => state.usersMultitask);
+    
     //STATE
     const [values, handleInputChange] = useForm(initialNewUser);
+    const [fileState, setFileState] = useState(undefined);
     //HANDLES
     function handleChange(value) {
         if(value !== "Seleccione un tipo")values.Rol = value;
       }
+    const handlePicture = async() => {
+       await selectPicture(setFileState);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,13 +46,13 @@ const RegisterUser = () => {
        
        toastInfo("Procesando Solicitud");
        //EXTRAYENDO IMAGEN
-       var file = document.querySelector('#fileSelector');
-        file = (file.files[0]) ? file.files[0] : false
         
        //Registrar usuario
-        dispatch(startRegisterUser(values, file))
+        dispatch(startRegisterUser(values, (fileState)? fileState : false))
         
     }
+        //EFECTO PARA TRAER LOS USUARIOS SI NO ESTAN
+        useEffect(() => {if(users.length === 0)dispatch(getUsers()) }, [dispatch, users]);
     return (
         <>
         <h2 className='title text-center mt-5'>Nuevos Usuarios</h2>
@@ -81,12 +89,12 @@ const RegisterUser = () => {
                         <Option value="admin">Administrador</Option>
                     </Select>
 
-                    <div className='flex items-center'>
-                        <FcPanorama size={"1.5em"}/>
-                        <label>¿Foto?</label>
-                        
+                    <div className='flex flex-col items-center'>
+                        <label>¿Subir foto?</label>
+                        <FcPanorama size={"1.5em"} className='cursor-pointer' onClick={handlePicture}/>
+                        {fileState  && fileState.name}
                     </div>
-                    <input id='fileSelector' type="file" accept=".png, .jpg, .jpeg"/>
+                    {/* <input id='fileSelector' type="file" accept=".png, .jpg, .jpeg"/> */}
                     <button type='submit' className='flex flex-col items-center'>
                         Registrar
                         <FcNext size={"1.5em"}/>

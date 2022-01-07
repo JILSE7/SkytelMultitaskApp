@@ -1,4 +1,6 @@
+import { saveAction } from "../helpers/alert";
 import { fetchFunction } from "../helpers/fetch"
+import { toastMessage } from "../helpers/toast";
 import { types } from "../types/types";
 
 
@@ -42,14 +44,17 @@ export const getCustomerByPin = (pin) => {
 export const unlockService = (pin) => {
     return async(dispatch,store) => {
         
-        console.log("tengo de desbloquear a" + pin);
+        //console.log("tengo de desbloquear a" + pin);
         const resp = await (await fetchFunction(`Email/unlockedMessages`, {pin}, "PUT")).json();
         
 
         if(resp){
             try {
              const customers = await (await fetchFunction('Cliente/clientes')).json();
+             saveAction("Informacion actualizada");
+             toastMessage(`Se ha reactivado el servicio de ${pin}`, true);
              dispatch(setCustomers(customers.data));
+
             } catch (error) {
              console.log(error);   
             }
@@ -67,11 +72,13 @@ export const lockService = (pin) => {
 
         try {
             const resp = await (await fetchFunction(`Email/lockedMessages`, {pin}, "PUT")).json();
-            console.log(resp);
+            //console.log(resp);
     
             if(resp){
                 try {
                  const customers = await (await fetchFunction('Cliente/clientes')).json();
+                 saveAction("Informacion actualizada");
+                toastMessage(`Se ha suspendido el servicio de ${pin}`, true);
                  dispatch(setCustomers(customers.data));
                     
                 } catch (error) {

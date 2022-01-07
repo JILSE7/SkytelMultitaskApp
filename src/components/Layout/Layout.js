@@ -18,7 +18,7 @@ import useModal from '../../Hooks/useModal';
 //Logos
 import logo from '../../assets/cloud2.png';
 import logoHeader from '../../assets/cloud.png';
-import user from '../../assets/use1.jpg';
+import skytel from '../../assets/skytelTraingulo2.png';
 import { useDispatch } from 'react-redux';
 import { startLogOut } from '../../actions/auth';
 
@@ -36,7 +36,6 @@ const LayoutComponent = ({children}) => {
 
     const {username, rol, imagen} = useUser();
     const {isModalVisible, showModal, handleOk,handleCancel} = useModal();
-    console.log(imagen);
 
     const [collapsed, setCollapsed] = useState(true);
     const onCollapse = () => setCollapsed(!collapsed);
@@ -78,12 +77,13 @@ const LayoutComponent = ({children}) => {
           
         </Sider>
         <Layout className="site-layout">
-          <Header className="Layout_Header flex justify-around items-center" style={{ padding: 0 }} >
-            <h1>!Bienvenido de nuevo!</h1>
+          <Header className="Layout_Header flex justify-between items-center" style={{ padding: 0 }} >
             
-            <div className='Layout_Header_Profile flex'>
-              <p>{username}</p>
+            <img  src={skytel} alt='userImage'/>
+            <h1>!Bienvenido de nuevo!</h1>
+            <div className='Layout_Header_Profile flex items-center'>
               <img className="logo" src={imagen} alt='userImage'/>
+              <p>{username}</p>
             </div>
             
           </Header>

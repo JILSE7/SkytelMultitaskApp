@@ -24,7 +24,7 @@ const Messages = () => {
     const dispatch = useDispatch();
     //Hooks
     const {username} = useUser();
-    const [values, handleInputChange] = useForm(initialMessage);
+    const [values, handleInputChange, reset] = useForm(initialMessage);
     
 
     //Submit
@@ -47,7 +47,7 @@ const Messages = () => {
          //Agregar usuario
          values.user = username
 
-         console.log(values);
+         //console.log(values);
          //Notificacion de envio de mensaje
          toastInfo('Enviando Mensaje');
          //Establecer el mensaje en la store
@@ -55,8 +55,13 @@ const Messages = () => {
          //Mandando el mensaje
          const resp =  await dispatch(sendMessage());
          //Respuesta del mensaje con notificacion
-         (resp) ? toastMessage("Excelente, Mensaje Enviado", true) : 
-                  toastMessage("No se ha podido enviar el mensaje, comunicate con el administrador");
+         if(resp){
+             toastMessage("Excelente, Mensaje Enviado", true) 
+             reset();
+             return;
+         }
+
+        toastMessage("No se ha podido enviar el mensaje, comunicate con el administrador");
 
     }
 

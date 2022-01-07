@@ -1,4 +1,5 @@
 const baseURL = 'https://apisky.infosite.com.mx/index.php';
+//const baseURL = 'http://172.20.1.36/apiMultitask/index.php';
 const fetchFunction = (end, data, method = 'GET', token = '') => {
 
     if(method === 'GET'){
@@ -11,7 +12,6 @@ const fetchFunction = (end, data, method = 'GET', token = '') => {
             'Content-type': 'application/json',
             'token' : token
         },
-        mode: 'cors',
         body: JSON.stringify(data)
     })
 
@@ -35,14 +35,11 @@ const uploadPhoto = async(file)=>{
 
         return respuesta.secure_url
 
-
     } catch (error) {
         throw error;
     }
 
 }
-
-
 
 export {
     fetchFunction,
