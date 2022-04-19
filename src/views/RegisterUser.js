@@ -31,12 +31,12 @@ const RegisterUser = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
        //VALIDACIONES
-       if(!values.Username) return toastMessage("Nombre de usuario no puede ir vacio");
-       if(!values.Email) return toastMessage("Email no puede ir vacio");
-       if(!values.Password) return toastMessage("La contraseña no puede estar vacia");
-       if(!values.Confirm) return toastMessage("La confirmacion de constraseña no puede ir vacia");
-       if(values.Confirm !== values.Password) return toastMessage("Las contraseñas no son iguales");
-       if(!values.Rol) return toastMessage("No se ha seleccionado ningun tipo de usuario");
+       if(!values.Username) return toastMessage("😕 Nombre de usuario no puede ir vacio");
+       if(!values.Email) return toastMessage("😕 Email no puede ir vacio");
+       if(!values.Password) return toastMessage("😕 La contraseña no puede estar vacia");
+       if(!values.Confirm) return toastMessage("😕 La confirmacion de constraseña no puede ir vacia");
+       if(values.Confirm !== values.Password) return toastMessage("😕 Las contraseñas no son iguales");
+       if(!values.Rol) return toastMessage("😕 No se ha seleccionado ningun tipo de usuario");
 
        //VERIFCACION CONTRA LA STORE PARA EL USUARIO
        const verifyStore = userStoreVerify(users,values);

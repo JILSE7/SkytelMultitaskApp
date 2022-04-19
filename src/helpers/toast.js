@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 export const toastMessage = (message, state = false, position = "top-right") => {
     
     return  state ? (
-        toast.success(`🦄 ${message}`, {
+        toast.success(` ${message}`, {
             position,
             autoClose: 5000,
             hideProgressBar: false,
@@ -14,7 +14,7 @@ export const toastMessage = (message, state = false, position = "top-right") => 
             
             })
 
-    ) : toast.error(`🦄 ${message}`, {
+    ) : toast.error(` ${message}`, {
         position,
         autoClose: 5000,
         hideProgressBar: false,

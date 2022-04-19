@@ -55,6 +55,7 @@ export const checkLogin = (token, setLoading) => {
             }, 600);
         }else{
             dispatch(logOut());
+            setLoading(false);
         }
         
     }

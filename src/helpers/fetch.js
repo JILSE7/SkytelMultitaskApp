@@ -1,5 +1,5 @@
 const baseURL = 'https://apisky.infosite.com.mx/index.php';
-//const baseURL = 'http://172.20.1.36/apiMultitask/index.php';
+//const baseURL = 'http://172.20.1.36/apiSkytel/index.php';
 const fetchFunction = (end, data, method = 'GET', token = '') => {
 
     if(method === 'GET'){

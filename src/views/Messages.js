@@ -34,11 +34,11 @@ const Messages = () => {
             values.pin = pin;
         }
         if(!values.pin){
-         toastMessage("Falta el pin de destino");
+         toastMessage("🙄 Falta el pin de destino");
          return;
         }
         if(!values.msg){
-         toastMessage("Falta escribir un mensaje")
+         toastMessage("🙄 Falta escribir un mensaje")
          return;
         }
 
@@ -49,19 +49,19 @@ const Messages = () => {
 
          //console.log(values);
          //Notificacion de envio de mensaje
-         toastInfo('Enviando Mensaje');
+         toastInfo('🤠 Enviando Mensaje');
          //Establecer el mensaje en la store
          dispatch(setMessage(values));
          //Mandando el mensaje
          const resp =  await dispatch(sendMessage());
          //Respuesta del mensaje con notificacion
          if(resp){
-             toastMessage("Excelente, Mensaje Enviado", true) 
+             toastMessage("🥳 Excelente, Mensaje Enviado", true) 
              reset();
              return;
          }
 
-        toastMessage("No se ha podido enviar el mensaje, comunicate con el administrador");
+        toastMessage("😕 No se ha podido enviar el mensaje, comunicate con el administrador");
 
     }
 

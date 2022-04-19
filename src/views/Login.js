@@ -42,7 +42,7 @@ const Login = () => {
         // eslint-disable-next-line no-unused-expressions
         if(login.ok){
             navigate('/',{replace: true});
-            toastMessage(`Has iniciado sesion ${login.user.username}`,true, "top-left")
+            toastMessage(`🤠 Has iniciado sesion ${login.user.username}`,true, "top-left")
         }   
         
     }

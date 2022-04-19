@@ -59,7 +59,7 @@ export const startRegisterUser = (user,file) => {
         if(!response.status)toastMessage(JSON.stringify(response.error).slice(0,-1).slice(1,-1));
         
         dispatch(registerUser());
-        toastMessage(`Excelente, usuario ${user.Username} registrado, ya puede iniciar sesion`, true);
+        toastMessage(`🤠 Excelente, usuario ${user.Username} registrado, ya puede iniciar sesion`, true);
         //TRAYENDO A LOS NUEVOS USUARIOS
         dispatch(getUsers()); 
 
@@ -90,7 +90,7 @@ export const changeDataUser = (data, file) => {
             if(response.ok){
                 dispatch({type: types.updateUser})
                 saveAction("Informacion actualizada");
-                toastMessage(`Se ha cambiado la informacion de${data.Username}`, true);
+                toastMessage(`🤠 Se ha cambiado la informacion de${data.Username}`, true);
                 dispatch(getUsers());
             }
         } catch (error) {
@@ -108,7 +108,7 @@ export const changePasswordUser = (data) => {
         if(response.ok){
             dispatch({type: types.updateUserPassword});
             saveAction("Contraseña actualizada");
-            toastMessage(`El usuario ${data.Username} puede iniciar sesion con su nueva contraseña`, true);
+            toastMessage(`🤠 El usuario ${data.Username} puede iniciar sesion con su nueva contraseña`, true);
         }
             
         } catch (error) {

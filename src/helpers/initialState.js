@@ -48,13 +48,23 @@ const initialUpdateUser = {
 }
 
 
+const initialNewCustomer = {
+	nombre: "",
+	pin:"",
+	ruteo: "",
+	destino:"",
+	copia:"",
+	estado:"1"
+}
+
+
 export {
-    initialStateLogin,
-    initialStateUser,
-    initialStateCustomers,
     initialMessage,
     initialMultitask,
+    initialNewCustomer,
     initialNewUser,
+    initialStateCustomers,
+    initialStateLogin,
+    initialStateUser,
     initialUpdateUser
-    
 }

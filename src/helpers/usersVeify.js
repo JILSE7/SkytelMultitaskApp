@@ -13,6 +13,5 @@ export const userStoreVerify = (store = [], newUser) => {
     if(verify){
         return verify
     }
-
     return false;
 }

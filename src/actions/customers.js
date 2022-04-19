@@ -52,7 +52,7 @@ export const unlockService = (pin) => {
             try {
              const customers = await (await fetchFunction('Cliente/clientes')).json();
              saveAction("Informacion actualizada");
-             toastMessage(`Se ha reactivado el servicio de ${pin}`, true);
+             toastMessage(`💃 Se ha reactivado el servicio de ${pin}`, true);
              dispatch(setCustomers(customers.data));
 
             } catch (error) {
@@ -78,7 +78,7 @@ export const lockService = (pin) => {
                 try {
                  const customers = await (await fetchFunction('Cliente/clientes')).json();
                  saveAction("Informacion actualizada");
-                toastMessage(`Se ha suspendido el servicio de ${pin}`, true);
+                toastMessage(`💃 Se ha suspendido el servicio de ${pin}`, true);
                  dispatch(setCustomers(customers.data));
                     
                 } catch (error) {
@@ -93,6 +93,28 @@ export const lockService = (pin) => {
         }
         
         
+    }
+}
+
+export const setNewCustomer = (newCustomer) => {
+    return async (dispatch) => {
+        console.log(JSON.stringify(newCustomer));
+
+        try {
+            const resp = await (await fetchFunction(`/Cliente/clienteRegister`, {newCustomer}, "POST")).json();
+            console.log(resp);
+            if(resp.ok){
+                dispatch(getCustomers());
+                return toastMessage(`😎 ${resp.msg}`,true);
+            }else{
+                return toastMessage(`😎 ${resp.msg}`);
+            }   
+            
+        } catch (error) {
+            console.log(error);
+        }
+
+
     }
 }
 
