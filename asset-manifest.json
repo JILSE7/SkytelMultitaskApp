@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "./static/css/main.139d2065.css",
-    "main.js": "./static/js/main.08d892f9.js",
-    "static/media/cloud.png": "./static/media/cloud.b336efe450e4b95557a9.png",
-    "index.html": "./index.html",
-    "main.139d2065.css.map": "./static/css/main.139d2065.css.map",
-    "main.08d892f9.js.map": "./static/js/main.08d892f9.js.map"
+    "main.css": "/SkytelMultitaskApp/static/css/main.691498c1.css",
+    "main.js": "/SkytelMultitaskApp/static/js/main.81ca77e0.js",
+    "static/media/cloud.png": "/SkytelMultitaskApp/static/media/cloud.b336efe450e4b95557a9.png",
+    "service-worker.js": "/SkytelMultitaskApp/service-worker.js",
+    "static/media/cloud2.png": "/SkytelMultitaskApp/static/media/cloud2.d94e0f5d0cfd6a718e5d.png",
+    "static/media/skytelTraingulo2.png": "/SkytelMultitaskApp/static/media/skytelTraingulo2.26421d0c44bc56840843.png",
+    "index.html": "/SkytelMultitaskApp/index.html",
+    "main.691498c1.css.map": "/SkytelMultitaskApp/static/css/main.691498c1.css.map",
+    "main.81ca77e0.js.map": "/SkytelMultitaskApp/static/js/main.81ca77e0.js.map"
   },
   "entrypoints": [
-    "./static/css/main.139d2065.css",
-    "./static/js/main.08d892f9.js"
+    "static/css/main.691498c1.css",
+    "static/js/main.81ca77e0.js"
   ]
 }
